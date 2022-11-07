@@ -1,0 +1,85 @@
+(venv) E:\MyDjangoWorks\QADjangoApp>python manage.py shell
+Python 3.10.5 (tags/v3.10.5:f377153, Jun  6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from api.models import Questions, Answers
+>>> from django.contrib.auth.models import User
+>>> usr = User.objects.get(id=1)
+>>> usr
+<User: django>
+>>> Questions.objects.create(title='django', description='django architecture?',user=usr)<Questions: django>
+>>> usr.questions_set.create(title='angular', description='Which type of data binding does Angular deploy?')
+<Questions: angular>
+>>> usr.questions_set.create(title='django', description=' Is Django backend or front end?')
+<Questions: django>
+>>> usr = User.objects.get(id=2)
+>>> usr
+<User: python>
+>>> usr.questions_set.create(title='python', description='What are the key features of Python?')
+<Questions: python>
+>>> usr.questions_set.create(title='angular', description='What are templates in Angular?')
+<Questions: angular>
+>>> usr.questions_set.all()
+<QuerySet [<Questions: python>, <Questions: angular>]>
+>>> ques = Questions.objects.get(id=3)
+>>> ques
+<Questions: django>
+>>> usr
+<User: python>
+>>> ques.answers_set.create(answer='both',user=usr)
+<Answers: both>
+>>> usr = User.objects.get(id=3) 
+>>> ques.answers_set.create(answer='front end',user=usr)
+<Answers: front end>
+>>> ques.answers_set.all()
+<QuerySet [<Answers: both>, <Answers: front end>]>
+>>> ques = Questions.objects.get(id=4)
+>>> ques.answers_set.create(answer='interpreted,dynamically typed,user friendly ',user=usr)
+<Answers: interpreted,dynamically typed,user friendly >
+>>> ques = Questions.objects.get(id=5)
+>>> usr = User.objects.get(id=1)
+>>> ques.answers_set.create(answer='HTML that instructs Angular about how to display a component',user=usr)
+<Answers: HTML that instructs Angular about how to display a component>
+>>> ques = Questions.objects.get(id=2)
+>>> usr = User.objects.get(id=3)
+>>> ques.answers_set.create(answer='One-way and Two-way Data Binding.',user=usr)
+<Answers: One-way and Two-way Data Binding.>
+>>> usr = User.objects.get(id=1)
+>>> ques.answers_set.create(answer='One-way',user=usr)
+<Answers: One-way>
+>>> ques.answers_set.all()
+<QuerySet [<Answers: One-way and Two-way Data Binding.>, <Answers: One-way>]>
+>>>                                                                                                                                                         
+     ques.answers_set.all()ques.answers_set.create(answer='front end',user=usr)                                                    )
+>>> usr
+<User: django>
+>>> usr = User.objects.get(id=3) 
+>>> ans = Answers.objects.get(id=4)
+>>> ans.upvote.add(usr)
+>>> usr = User.objects.get(id=2)    
+>>> ans.upvote.add(usr)
+>>> usr = User.objects.get(id=2) 
+>>> usr
+<User: python>
+>>> usr = User.objects.get(id=3) 
+>>> usr
+<User: angular>
+>>> usr.questions_set.create(title='FIFA', description='Which country is hosting FIFA World Cup?')
+<Questions: FIFA>
+>>> usr = User.objects.get(id=1) 
+>>> usr
+<User: django>
+>>> usr = User.objects.get(id=2) 
+>>> usr
+<User: python>
+>>> ques = Questions.objects.get(id=6)
+>>> ques.answers_set.create(answer='Qatar', user=usr)
+<Answers: Qatar>
+>>> usr = User.objects.get(id=1) 
+>>> ans = Answers.objects.get(id=7)
+>>> usr
+<User: django>
+>>> ans.upvote.add(usr)
+>>> ans = Answers.objects.get(id=4) 
+>>> ans.upvote.all()                
+<QuerySet [<User: python>, <User: angular>]>

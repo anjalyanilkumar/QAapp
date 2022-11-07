@@ -22,3 +22,17 @@ class Answers(models.Model):
     def __str__(self):
         return self.answer
 
+# from api.models import Questions, Answers
+# from django.contrib.auth.models import User                                                
+# usr = User.objects.get(id=1)
+# Questions.objects.create(title='django', description='django architecture?', user=usr)
+# usr.questions_set.create(title='django', description='django architecture?')
+# qs = Questions.objects.filter(user=usr)
+# usr.questions_set.all()
+# Answers.objects.create(question=3,answer='both',user=usr)
+# ques = Questions.objects.get(id=3)
+# ques.answers_set.create(answer='both',user=usr)
+# ques.answers_set.all()
+# ans = Answers.objects.get(id=4)
+# ans.upvote.add(usr)
+# ans.upvote.all()
