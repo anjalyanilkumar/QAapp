@@ -36,3 +36,4 @@ class Answers(models.Model):
 # ans = Answers.objects.get(id=4)
 # ans.upvote.add(usr)
 # ans.upvote.all()
+
